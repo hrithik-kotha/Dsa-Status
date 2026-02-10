@@ -1,0 +1,21 @@
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var mergeAdjacent = function(nums) {
+    let ar=[];
+    ar.push(nums[0]);
+    for(let i=1;i<nums.length;i++){
+        if(ar.at(-1)==nums[i]){
+            ar[ar.length-1]+=nums[i];
+            while(ar.length>1&&ar.at(-1)==ar.at(-2)){
+                ar[ar.length-2]+=ar[ar.length-1];
+                ar.pop();
+            }
+        }
+        else{
+            ar.push(nums[i]);
+        }
+    }
+    return ar;
+};
