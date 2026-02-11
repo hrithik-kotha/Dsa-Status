@@ -18,6 +18,5 @@ var numSubarrayProductLessThanK = function (nums, k) {
         if(i<=j&&product<k) count+=(j-i+1);
         j++;
     }
-
     return count;
 };
