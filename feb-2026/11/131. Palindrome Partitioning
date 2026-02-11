@@ -1,0 +1,37 @@
+/**
+ * @param {string} s
+ * @return {string[][]}
+ */
+function recurse(s, ans, idx, ans1) {
+
+    if (idx == s.length) {
+        ans.push([...ans1]);
+        return;
+    }
+    for (let i = idx; i < s.length; i++) {
+
+        // console.log(s.substring(idx, i - idx +1))
+        if (isPalindrome(s.substring(idx, i + 1))) {
+            ans1.push(s.substring(idx, i + 1));
+            recurse(s, ans, i + 1, ans1);
+            ans1.pop();
+        }
+    }
+}
+
+function isPalindrome(f) {
+
+    for (let i = 0; i < f.length; i++) {
+        if (f[i] !== f[f.length - 1 - i]) {
+            return false;
+        }
+    }
+    return true;
+}
+var partition = function (s) {
+
+    let ans = [], ans1 = [];
+
+    recurse(s, ans, 0, ans1);
+    return ans;
+};
