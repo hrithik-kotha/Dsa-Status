@@ -18,7 +18,6 @@ function recurse(s, ans, idx, ans1) {
         }
     }
 }
-
 function isPalindrome(f) {
 
     for (let i = 0; i < f.length; i++) {
