@@ -1,0 +1,38 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var longestBalanced = function (s) {
+
+
+
+    let i = 0, j = 0,ans=1;;
+
+    for (let i = 0; i < s.length; i++) {
+        let mp = new Map();
+        mp.set(s[i],1);
+        let bigchar=s[i];
+        let maxc=1;
+        for (let j = i + 1; j < s.length; j++) {
+            if(mp.has(s[j])){
+                let z=mp.get(s[j])+1;
+                mp.set(s[j],z);
+                if(z>maxc){
+                    bigchar=s[j];
+                    maxc=z;
+                }
+            }
+            else{
+                mp.set(s[j],1);
+            }
+            // if(i==0&&j==3){
+            //     console.log(maxc,bigchar,mp);
+            // }
+            if((j-i+1)/maxc==mp.size){
+                // console.log(i,j);
+                ans=Math.max(ans,j-i+1);
+            }
+        }
+    }
+    return ans;
+};
