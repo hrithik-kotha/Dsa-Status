@@ -1,0 +1,30 @@
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var hasAlternatingBits = function(n) {
+    let flag=0;
+    for(let i=0;i<32;i++){
+        if(n<=0){
+            break;
+        }
+        if(i==0&&n&1){
+            flag=0;
+        }
+        else if(i==0){
+            flag=1;
+        }
+        else{
+            //  console.log(n&1,flag);
+            if((n&1)==flag){
+            //    console.log("k")
+                flag=!flag;
+            }
+            else{
+                return false;
+            }
+        }
+        n=n>>1;
+    }
+    return true;
+};
