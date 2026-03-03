@@ -1,0 +1,38 @@
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {character}
+ */
+var findKthBit = function (n, k) {
+
+    function invert(string) {
+        let g = "";
+        for (let i = 0; i < string.length; i++) {
+            if (string[i] == "0") {
+                g += "1";
+            }
+            else {
+                g += "0"
+            }
+        }
+        return g;
+    }
+
+    function reverse(string) {
+        let g = "";
+        for (let i = string.length - 1; i >= 0; i--) {
+            g+=string[i];
+        }
+        return g;
+    }
+
+    let s = "0";
+
+    for (let i = 2; i <= n; i++) {
+        let x = s + "1" + reverse(invert(s));
+        s = x;
+    }
+
+    return s[k-1]
+
+};
