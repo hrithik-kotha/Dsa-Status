@@ -1,0 +1,25 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var minOperations = function (s) {
+    let flag = "0", minc = Infinity, count = 0;
+    for (let j = 0; j < 2; j++) {
+        for (let i = 0; i < s.length; i++) {
+            if (flag !== s[i]) {
+                count++;
+            }
+            if (flag == "0") {
+                flag = "1";
+            }
+            else {
+                flag = "0";
+            }
+
+        }
+        flag="1";
+        minc=Math.min(minc,count);
+        count=0;
+    }
+    return minc;
+};
