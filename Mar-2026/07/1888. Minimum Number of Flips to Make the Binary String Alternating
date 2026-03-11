@@ -1,0 +1,62 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var minFlips = function (s) {
+
+    let oddZeroes = 0, oddOnes = 0, evenZeroes = 0, evenOnes = 0, count = Infinity;
+    for (let i = 0; i < s.length; i++) {
+        if (i % 2 == 0) {
+            if (s[i] == "0") {
+                evenZeroes++;
+            }
+            else {
+                evenOnes++;
+            }
+        }
+        else {
+            if (s[i] == "0") {
+                oddZeroes++;
+            }
+            else {
+                oddOnes++;
+            }
+        }
+    }
+
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] == "1") {
+            --evenOnes;
+        }
+        else {
+            --evenZeroes;
+        }
+        let x = oddOnes;
+        oddOnes = evenOnes;
+        evenOnes = x;
+        x = oddZeroes;
+        oddZeroes = evenZeroes;
+        evenZeroes = x;
+        if (s[i] == "1") {
+            if (s.length % 2 == 0) {
+                oddOnes++;
+            }
+            else {
+                evenOnes++;
+            }
+        }
+        else {
+            if (s.length % 2 == 0) {
+                oddZeroes++;
+            }
+            else {
+                evenZeroes++;
+            }
+        }
+        // console.log("evenZeroes", evenZeroes, "oddZeroes:", oddZeroes, "evenOnes:",evenOnes, "oddOnes", oddOnes);
+        count=Math.min(count,Math.min(oddZeroes+evenOnes,evenZeroes+oddOnes));
+    }
+
+    // console.log();
+    return count
+};
