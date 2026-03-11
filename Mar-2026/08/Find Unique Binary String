@@ -1,0 +1,27 @@
+/**
+ * @param {string[]} nums
+ * @return {string}
+ */
+
+var findDifferentBinaryString = function(nums) {
+
+    const set = new Set(nums);
+    const n = nums.length;
+
+    function recurse(i, s) {
+        if (i === n) {
+            if (!set.has(s)) return s;
+            return null;
+        }
+
+        let res = recurse(i + 1, s + "0");
+        if (res) return res;
+
+        res = recurse(i + 1, s + "1");
+        if (res) return res;
+
+        return null;
+    }
+
+    return recurse(0, "");
+};
