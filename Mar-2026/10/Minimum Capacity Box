@@ -1,0 +1,15 @@
+/**
+ * @param {number[]} capacity
+ * @param {number} itemSize
+ * @return {number}
+ */
+var minimumIndex = function (capacity, itemSize) {
+    let ans=Infinity,idx=-1;
+    for (let i = 0; i < capacity.length; i++) {
+        if(capacity[i]>=itemSize&&capacity[i]<ans){
+            ans=capacity[i];
+            idx=i;
+        }
+    }
+    return idx;
+};
