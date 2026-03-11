@@ -1,0 +1,19 @@
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var bitwiseComplement = function(n) {
+    if(n==0)return 1
+    let x="";
+    while(n>0){
+        if(n&1){
+            x="0"+x;
+        }
+        else{
+            x="1"+x;
+        }
+        n=n>>1;
+    }
+    
+    return parseInt(x,2)
+};
